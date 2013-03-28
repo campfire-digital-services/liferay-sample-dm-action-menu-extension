@@ -226,12 +226,13 @@ if (row == null && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) || 
 					</c:if>
 
 <%
-					String menuItems = System.getProperty("liferay.menu.doclibrary.folder.action.entries");
+					String menuItems = System.getProperty("liferay.dl.folder.actions");
 					if(menuItems == null) menuItems = "";
 					String[] menuItemEntries = com.liferay.portal.kernel.util.StringUtil.split(menuItems, StringPool.COMMA);
 
 					for(String menuItem: menuItemEntries) {
-					    String menuItemJsp = "/html/portlet/document_library/menu/" + menuItem;
+					    String menuItemJsp = "/html/portlet/document_library/menu/" + menuItem + ".jsp";
+					    request.setAttribute("folder_action::folder", folder);
 %>					
 						<liferay-util:include page="<%=menuItemJsp %>" />		
 

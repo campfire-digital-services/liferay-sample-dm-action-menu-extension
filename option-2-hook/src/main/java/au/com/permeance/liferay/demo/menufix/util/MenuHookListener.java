@@ -25,8 +25,8 @@ import javax.servlet.ServletContextListener;
 public class MenuHookListener implements ServletContextListener {
 
     private static final Log _log = LogFactoryUtil.getLog(MenuHookListener.class);
-    private static final String MENU_PORTAL_PROP_KEY = "liferay.menu.doclibrary.folder.action.entries";
-    private static final String HOOK_OPTION_JSP = "option2.jsp";
+    private static final String MENU_PORTAL_PROP_KEY = "liferay.dl.folder.actions";
+    private static final String HOOK_OPTION_JSP = "option2";
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
@@ -44,8 +44,7 @@ public class MenuHookListener implements ServletContextListener {
             menuItems = "";
         }
         System.setProperty(MENU_PORTAL_PROP_KEY, StringUtil.add(menuItems, HOOK_OPTION_JSP, StringPool.COMMA));
-        _log.info(System.getProperty(MENU_PORTAL_PROP_KEY));
-
+        _log.info(MENU_PORTAL_PROP_KEY + StringPool.COLON + System.getProperty(MENU_PORTAL_PROP_KEY));
     }
 
     public static void stopApplication() {
@@ -54,7 +53,7 @@ public class MenuHookListener implements ServletContextListener {
             menuItems = "";
         }
         System.setProperty(MENU_PORTAL_PROP_KEY, StringUtil.remove(menuItems, HOOK_OPTION_JSP, StringPool.COMMA));
-        _log.info(System.getProperty(MENU_PORTAL_PROP_KEY));
+        _log.info(MENU_PORTAL_PROP_KEY + StringPool.COLON + System.getProperty(MENU_PORTAL_PROP_KEY));
     }
 
 }
