@@ -12,11 +12,12 @@
  * You should have received a copy of the GNU General Public License along with this program. If
  * not, see <http://www.gnu.org/licenses/>.
  */
-package au.com.permeance.liferay.demo.menufix.util;
+package au.com.permeance.liferay.portal.documentlibrary.servlet;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+
 
 /**
  * StartupServlet
@@ -32,17 +33,19 @@ import javax.servlet.http.HttpServlet;
  */
 public class StartupServlet extends HttpServlet {
 
-    private static final long serialVersionUID = -6917677483398490295L;
+	private static final long serialVersionUID = 2555693108542360658L;
 
-    @Override
+	@Override
     public void init(final ServletConfig config) throws ServletException {
+    	System.out.println("init");
         super.init(config);
-        MenuHookListener.startApplication();
+        FolderActionsMenuHookListener.startApplication();
     }
 
     @Override
     public void destroy() {
-        MenuHookListener.stopApplication();
+    	System.out.println("destroy");
+        FolderActionsMenuHookListener.stopApplication();
         super.destroy();
     }
 }

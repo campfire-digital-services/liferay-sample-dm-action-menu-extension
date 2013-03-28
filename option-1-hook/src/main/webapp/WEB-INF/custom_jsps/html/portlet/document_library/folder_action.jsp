@@ -16,6 +16,9 @@
 
 <%@ include file="/html/portlet/document_library/init.jsp" %>
 
+<%@ page import="com.liferay.portal.kernel.log.Log" %>
+<%@ page import="com.liferay.portal.kernel.log.LogFactoryUtil" %>
+
 <%
 String randomNamespace = null;
 
@@ -225,20 +228,25 @@ if (row == null && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) || 
 						/>
 					</c:if>
 
-<%
-					String menuItems = System.getProperty("liferay.dl.folder.actions");
-					if(menuItems == null) menuItems = "";
-					String[] menuItemEntries = com.liferay.portal.kernel.util.StringUtil.split(menuItems, StringPool.COMMA);
-
-					for(String menuItem: menuItemEntries) {
-					    String menuItemJsp = "/html/portlet/document_library/menu/" + menuItem + ".jsp";
+					<%
+					// Include custom menu items
+					final String SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT = "liferay.dl.folder.actions.menu.ext";
+					LOG.debug("folder actions menu ext key: " + SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT);
+					String tempSysVal = System.getProperty(SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT);
+					LOG.debug("tempSysVal: " + tempSysVal);
+					String menuItemsStr = GetterUtil.getString(System.getProperty(SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT),StringPool.BLANK);
+					LOG.debug("menuItemsStr: " + menuItemsStr);			
+					String[] menuItems = StringUtil.split(menuItemsStr,StringPool.COMMA);
+					LOG.debug("menuItems.length: " + menuItems.length);
+					for (String menuItem: menuItems) {
+					    String menuItemJsp = "/html/portlet/document_library/folder_actions_menu_ext/" + menuItem + ".jsp";
+					    LOG.debug("menuItemJsp: " + menuItemJsp);
 					    request.setAttribute("folder_action::folder", folder);
-%>					
+					%>					
 						<liferay-util:include page="<%=menuItemJsp %>" />		
-
-<%
+					<%
 					}
-%>
+					%>
 					
 					
 				</c:when>
@@ -484,3 +492,7 @@ if (row == null && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) || 
 		);
 	}
 </aui:script>
+
+<%!
+private static Log LOG = LogFactoryUtil.getLog("portal-web.docroot.html.portlet.document_library.folder_action.jsp");
+%>
