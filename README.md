@@ -1,5 +1,5 @@
-liferay-menu-fix-sample
-=======================
+sample-liferay-dm-action-menu-extension
+=======================================
 
 **Issue**
 
