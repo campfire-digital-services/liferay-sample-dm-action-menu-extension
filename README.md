@@ -14,12 +14,13 @@ We are providing an example using the folder action menu in Documents and Media 
 We use a system property "liferay.dl.folder.actions" to store a comma delimited list of jsps to include into that menu.
 
 Each new hook that wants to use this mechanism is expected to:
- * drop its JSPs into /html/portlet/documentlibrary/folder_actions_menu_ext/
- * on a startup listener, add the entries into that system property.
+ * drop its JSPs into /html/portlet/documentlibrary/folder_actions_menu_ext/. 
+ * on a startup listener, add the entries into that system property. The demo hooks allow the developer to configure the jsp(s) entries to add via a "dl.folder.actions.menu.ext" portal properties entry.
  * overwrite /html/portlet/documentlibrary/folder_actions.jsp with a version that uses this mechanism
 
-The demo hooks allow the developer to configure the jsp(s) entries to add via a "dl.folder.actions.menu.ext" portal properties entry.
-We are currently using a system property as portal properties cannot be edited programmatically in hooks (portal.properties file adds or replaces entries, it cannot edit them as we need in this case). This may change.
+We are currently using a system property for this list of comma delimited jsp entries as portal properties cannot be edited 
+programmatically in hooks (portal.properties file adds or replaces entries, it cannot edit them as we need in this case). 
+This may change.
 
 
 
