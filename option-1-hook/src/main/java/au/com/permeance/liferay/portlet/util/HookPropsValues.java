@@ -29,6 +29,6 @@ import com.liferay.portal.kernel.util.StringUtil;
  */
 public class HookPropsValues {
 	
-    public static String[] DL_FOLDER_ACTIONS_MENU_EXT = StringUtil.splitLines(PropsUtil.get(HookPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));    
+    public static String[] DL_FOLDER_ACTIONS_MENU_EXT = StringUtil.split(PropsUtil.get(HookPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));    
     
 }

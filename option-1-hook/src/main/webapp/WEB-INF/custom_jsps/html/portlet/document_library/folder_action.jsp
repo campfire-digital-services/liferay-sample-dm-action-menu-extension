@@ -233,13 +233,13 @@ if (row == null && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) || 
 					// LPS-33757 - http://issues.liferay.com/browse/LPS-33757
 					//
 					// Include custom menu items
-					final String SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT = "liferay.dl.folder.actions.menu.ext";
-					LOG.debug("folder actions menu ext key: " + SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT);
-					String menuItemsStr = System.getProperty(SYS_PROP_KEY_DL_FOLDER_ACTIONS_MENU_EXT);
+					final String SYS_PROP_LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT = "liferay.dl.folder.actions.menu.ext";
+					LOG.debug("folder actions menu ext key: " + SYS_PROP_LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT);
+					String menuItemsStr = System.getProperty(SYS_PROP_LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT);
 					LOG.debug("menuItemsStr: " + menuItemsStr);
-					String[] menuItems = StringUtil.splitLines(System.getProperty(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));
+					String[] menuItems = StringUtil.split(PropsUtil.get(SYS_PROP_LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));
 					LOG.debug("menuItems.length: " + menuItems.length);
-					for (String menuItem: menuItems) {
+					for (String menuItem : menuItems) {
 					    String menuItemJsp = "/html/portlet/document_library/folder_actions_menu_ext/" + menuItem + ".jsp";
 					    LOG.debug("menuItemJsp: " + menuItemJsp);
 					    request.setAttribute("folder_action::folder", folder);

@@ -43,6 +43,7 @@ public class FolderActionsMenuHookListener implements ServletContextListener {
         startApplication();
     }
 
+
     @Override
     public void contextDestroyed(ServletContextEvent event) {
         stopApplication();

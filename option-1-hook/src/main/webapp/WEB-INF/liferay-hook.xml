@@ -20,4 +20,5 @@ not, see <http://www.gnu.org/licenses/>.
 <hook>
 	<portal-properties>portal.properties</portal-properties>
     <custom-jsp-dir>/WEB-INF/custom_jsps</custom-jsp-dir>
+	<custom-jsp-global>true</custom-jsp-global>    
 </hook>
