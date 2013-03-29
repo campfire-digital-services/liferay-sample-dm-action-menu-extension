@@ -20,8 +20,8 @@ import au.com.permeance.liferay.portlet.util.StringUtilHelper;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -47,39 +47,57 @@ public class FolderActionsMenuHookListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent event) {
         stopApplication();
     }
+    
 
     public static void startApplication() {
     	
     	System.out.println("startApplication");
     	
-    	String newMenuItems = HookPropsValues.DL_FOLDER_ACTIONS_MENU_EXT;
-    	LOG.debug("newMenuItems: " + newMenuItems);
+    	String[] newMenuItems = HookPropsValues.DL_FOLDER_ACTIONS_MENU_EXT;
+    	String newMenuItemsStr = StringUtil.merge(newMenuItems);
+    	if (LOG.isDebugEnabled()) {
+        	LOG.debug("newMenuItems: " + newMenuItems);
+        	LOG.debug("newMenuItemsStr: " + newMenuItemsStr);
+    	}
     	
-        String curMenuItems = GetterUtil.getString( System.getProperty(HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT), StringPool.BLANK );
-        LOG.debug("curMenuItems: " + curMenuItems);
+    	String[] curMenuItems = StringUtil.splitLines(System.getProperty(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));
+    	String curMenuItemsStr = StringUtil.merge(curMenuItems);
+    	if (LOG.isDebugEnabled()) {
+        	LOG.debug("curMenuItems: " + curMenuItems);
+        	LOG.debug("curMenuItemsStr: " + curMenuItemsStr);
+    	}
         
-        String mergedMenuItems = StringUtilHelper.addDelimItems( curMenuItems, newMenuItems, StringPool.COMMA );
-        LOG.debug("mergedMenuItems: " + mergedMenuItems);
+        String mergedMenuItemsStr = StringUtilHelper.addDelimItems( curMenuItemsStr, newMenuItemsStr, StringPool.COMMA );
+        LOG.debug("mergedMenuItemsStr: " + mergedMenuItemsStr);
         
-        System.setProperty( HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT, mergedMenuItems );
-        LOG.info(HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT + ": " + System.getProperty(HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));
+        System.setProperty( HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT, mergedMenuItemsStr );
+        LOG.info(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT + ": " + System.getProperty(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));
     }
+
 
     public static void stopApplication() {
     	
     	System.out.println("stopApplication");
     	
-    	String newMenuItems = HookPropsValues.DL_FOLDER_ACTIONS_MENU_EXT;
-    	LOG.debug("newMenuItems: " + newMenuItems);
+    	String[] newMenuItems = HookPropsValues.DL_FOLDER_ACTIONS_MENU_EXT;
+    	String newMenuItemsStr = StringUtil.merge(newMenuItems);
+    	if (LOG.isDebugEnabled()) {
+        	LOG.debug("newMenuItems: " + newMenuItems);
+        	LOG.debug("newMenuItemsStr: " + newMenuItemsStr);
+    	}
     	
-        String curMenuItems = GetterUtil.getString( System.getProperty(HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT), StringPool.BLANK );
-        LOG.debug("curMenuItems: " + curMenuItems);
-
-        String mergedMenuItems = StringUtilHelper.removeDelimItems( curMenuItems, newMenuItems, StringPool.COMMA );
-        LOG.debug("mergedMenuItems: " + mergedMenuItems);
+    	String[] curMenuItems = StringUtil.splitLines(System.getProperty(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));
+    	String curMenuItemsStr = StringUtil.merge(curMenuItems);
+    	if (LOG.isDebugEnabled()) {
+        	LOG.debug("curMenuItems: " + curMenuItems);
+        	LOG.debug("curMenuItemsStr: " + curMenuItemsStr);
+    	}
         
-        System.setProperty( HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT, mergedMenuItems );
-        LOG.info(HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT + ": " + System.getProperty(HookSysPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));
+        String mergedMenuItemsStr = StringUtilHelper.removeDelimItems( curMenuItemsStr, newMenuItemsStr, StringPool.COMMA );
+        LOG.debug("mergedMenuItemsStr: " + mergedMenuItemsStr);
+        
+        System.setProperty( HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT, mergedMenuItemsStr );
+        LOG.info(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT + ": " + System.getProperty(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));
     }
 
 }

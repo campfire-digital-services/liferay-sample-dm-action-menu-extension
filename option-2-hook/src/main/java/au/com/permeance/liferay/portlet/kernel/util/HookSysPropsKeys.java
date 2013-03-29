@@ -22,6 +22,6 @@ package au.com.permeance.liferay.portlet.kernel.util;
  */
 public interface HookSysPropsKeys {
 	
-    public static final String DL_FOLDER_ACTIONS_MENU_EXT = "liferay.dl.folder.actions.menu.ext";
+    public static final String LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT = "liferay.dl.folder.actions.menu.ext";
 	
 }

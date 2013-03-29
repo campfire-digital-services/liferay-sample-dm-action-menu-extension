@@ -16,8 +16,8 @@ package au.com.permeance.liferay.portlet.util;
 
 import au.com.permeance.liferay.portlet.kernel.util.HookPropsKeys;
 
-import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PropsUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 
 
 /**
@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.util.PropsUtil;
  */
 public class HookPropsValues {
 	
-    public static final String DL_FOLDER_ACTIONS_MENU_EXT 
-		= GetterUtil.getString(PropsUtil.get(HookPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));    
+    public static String[] DL_FOLDER_ACTIONS_MENU_EXT = StringUtil.splitLines(PropsUtil.get(HookPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));    
     
 }

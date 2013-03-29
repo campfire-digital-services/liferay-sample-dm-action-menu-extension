@@ -14,6 +14,9 @@
  */
 package au.com.permeance.liferay.portal.documentlibrary.servlet;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,19 +36,23 @@ import javax.servlet.http.HttpServlet;
  */
 public class StartupServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 2555693108542360658L;
+    private static final long serialVersionUID = -6917677483398490295L;
+    
+    private static final Log LOG = LogFactoryUtil.getLog(StartupServlet.class);
+    
 
-	@Override
+    @Override
     public void init(final ServletConfig config) throws ServletException {
-    	System.out.println("init");
+    	LOG.debug("init");
         super.init(config);
         FolderActionsMenuHookListener.startApplication();
     }
 
     @Override
     public void destroy() {
-    	System.out.println("destroy");
+    	LOG.debug("destroy");
         FolderActionsMenuHookListener.stopApplication();
         super.destroy();
     }
+
 }

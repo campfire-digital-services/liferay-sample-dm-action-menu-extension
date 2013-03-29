@@ -15,20 +15,20 @@
 package au.com.permeance.liferay.portlet.util;
 
 import au.com.permeance.liferay.portlet.kernel.util.HookPropsKeys;
+import au.com.permeance.liferay.portlet.kernel.util.HookSysPropsKeys;
 
-import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 
 
 /**
- * Hook Property Values.
+ * Hook System Property Values.
  * 
  * @author Tim Telcik <tim.telcik@permeance.com.au>
  * 
  * @see HookPropsKeys
  */
-public class HookPropsValues {
+public class HookSysPropsValues {
 	
-    public static String[] DL_FOLDER_ACTIONS_MENU_EXT = StringUtil.splitLines(PropsUtil.get(HookPropsKeys.DL_FOLDER_ACTIONS_MENU_EXT));    
+    public static String[] LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT = StringUtil.splitLines(System.getProperty(HookSysPropsKeys.LIFERAY_DL_FOLDER_ACTIONS_MENU_EXT));    
     
 }
