@@ -1,5 +1,7 @@
-sample-liferay-dm-action-menu-extension
-=======================================
+# Sample Liferay Documents and Media Action Menu Extension
+
+*sample-liferay-dm-action-menu-extension*
+
 
 **Issue**
 
@@ -38,6 +40,6 @@ This solution is shared with the community for everyone's benefit. However this 
 
 **Team**
 
-* Chun Ho <chun.ho@permeance.com.au>
-* Tim Telcik <tim.telcik@permeance.com.au>
+* Chun Ho - chun.ho@permeance.com.au
+* Tim Telcik - tim.telcik@permeance.com.au
 
