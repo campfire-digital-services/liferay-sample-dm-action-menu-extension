@@ -23,12 +23,16 @@ We are providing an example using the folder action menu in Documents and Media 
 We use a system property "liferay.dl.folder.actions.menu.ext" to store a comma delimited list of jsps to include into that menu.
 
 Each new hook that wants to use this mechanism is expected to:
- * Add custom JSPs into folder :/html/portlet/documentlibrary/folder_actions_menu_ext/". 
+ * Add custom JSPs into folder "/html/portlet/documentlibrary/folder_actions_menu_ext/". 
  * Using a startup listener, add the entries into that system property. The demo hooks allow the developer to configure the jsp(s) entries to add via a "dl.folder.actions.menu.ext" portal properties entry.
  * Overwrite JSP file "/html/portlet/documentlibrary/folder_actions.jsp" with a version that uses this mechanism
 
-We are currently using a system property for this list of comma delimited JSP entries as portal properties cannot be edited  programmatically in hooks (portal.properties file adds or replaces entries, it cannot edit them as we need in this case). 
-This may change.
+We are currently using a system property for this list of comma delimited JSP entries as portal properties cannot be edited programmatically in hooks (portal.properties file adds or replaces entries, it cannot edit them as we need in this case). 
+
+Reference implementations of the Documents and Media Menu Extension can be see in the following Liferay Portal plugins:
+
+* [Documents and Media Downloader - liferay-dm-folder-downloader](https://github.com/permeance/liferay-dm-folder-downloader)
+* [Documents and Media Info Viewer - liferay-dm-info-viewer](https://github.com/permeance/liferay-dm-info-viewer)
 
 
 **License**
